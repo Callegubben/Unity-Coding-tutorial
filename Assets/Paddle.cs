@@ -36,4 +36,5 @@ public class Paddle : MonoBehaviour
     {
         _rigidbody.position += new Vector2(0, _verticalDirection) * (speed * Time.deltaTime);
     }
+
 }

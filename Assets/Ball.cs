@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+
     public float speed = 2f;
+    private float _maxSpeed = 20;
 
     [SerializeField]
-    private Vector2 _direction = Vector2.one;
+    private Vector2 _direction;
 
     [SerializeField]
     private Rigidbody2D _rigidbody;
@@ -27,24 +29,14 @@ public class Ball : MonoBehaviour
         {
             _collider = GetComponent<CircleCollider2D>();
         }
+        _direction = Vector2.right;
+        _direction += Vector2.up;
+
     }
 
     private void FixedUpdate()
     {
-        _rigidbody.position += _direction * (speed * Time.fixedDeltaTime);
+        _rigidbody.position += Vector2.right * (speed * Time.fixedDeltaTime);
 
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            _direction.x = -_direction.x;
-        }
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            _direction.y = -_direction.y;
-        }
     }
 }
