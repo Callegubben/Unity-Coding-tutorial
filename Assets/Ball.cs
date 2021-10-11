@@ -29,5 +29,6 @@ public class Ball : MonoBehaviour
     private void FixedUpdate()
     {
         _rigidbody.position += Vector2.right * (speed * Time.fixedDeltaTime);
+
     }
 }
