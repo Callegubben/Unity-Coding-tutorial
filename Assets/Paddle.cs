@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
+    public string player;
     public float speed = 13f;
     private float _verticalDirection;
 
@@ -29,7 +30,7 @@ public class Paddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _verticalDirection = Input.GetAxis("Vertical");
+        _verticalDirection = Input.GetAxis($"{player}Vertical");
     }
 
     private void FixedUpdate()

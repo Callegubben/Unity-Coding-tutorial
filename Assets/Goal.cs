@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+    public TextHandler goal;
 
-    public string goaltext;
-    [SerializeField]
-    private int goalCount = 0;
+    public int goalCount = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-            goalCount++;
-            if (goalCount >= 3)
-            {
-                Application.Quit();
-                UnityEditor.EditorApplication.isPlaying = false;
-            }
+            goal.Goal();
             collision.gameObject.GetComponent<Ball>().Reset();
             
         }

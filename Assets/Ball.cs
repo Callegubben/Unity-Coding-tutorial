@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public float speed = 3f;
-    private float _maxspeed = 10;
+    public float speed = 550f;
 
     [SerializeField]
-    private Vector2 _direction = Vector2.one;
+    private Vector2 _direction;
 
     [SerializeField]
     private Rigidbody2D _rigidbody;
@@ -18,7 +17,7 @@ public class Ball : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         if (_rigidbody == false)
         {
@@ -28,8 +27,22 @@ public class Ball : MonoBehaviour
         {
             _collider = GetComponent<CircleCollider2D>();
         }
-    }
+        float x = Random.Range(-1, 1);
+        while (x == 0)
+        {
+            x = Random.Range(-1, 1);
+        }
+        float y = Random.Range(-0.5f, 0.5f);
+        while (y == 0)
+        {
+            y = Random.Range(-0.5f, 0.5f);
+        }
 
+        _direction = new Vector2(x, y);
+
+        _rigidbody.AddForce(_direction * speed);
+    }
+    /*
     private void FixedUpdate()
     {
         if (speed > _maxspeed)
@@ -52,11 +65,11 @@ public class Ball : MonoBehaviour
         {
             _direction.y = -_direction.y;
         }
-    }
+    }*/
     public void Reset()
     {
         gameObject.transform.position = new Vector2(0, 0);
-        _direction = Vector2.one;
-        speed = 3;
+        _rigidbody.velocity = new Vector2(0, 0);
+        OnEnable();
     }
 }
