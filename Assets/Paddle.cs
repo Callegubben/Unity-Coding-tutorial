@@ -14,7 +14,6 @@ public class Paddle : MonoBehaviour
     [SerializeField]
     private BoxCollider2D _collider;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (_rigidbody == false)

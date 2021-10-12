@@ -15,8 +15,6 @@ public class Ball : MonoBehaviour
     [SerializeField]
     private CircleCollider2D _collider;
 
-
-    // Start is called before the first frame update
     void OnEnable()
     {
         if (_rigidbody == false)
@@ -42,30 +40,7 @@ public class Ball : MonoBehaviour
 
         _rigidbody.AddForce(_direction * speed);
     }
-    /*
-    private void FixedUpdate()
-    {
-        if (speed > _maxspeed)
-        {
-            speed = _maxspeed;
-        }
-        _rigidbody.position += _direction * (speed * Time.fixedDeltaTime);
 
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            _direction.x = -_direction.x;
-            speed++;
-        }
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            _direction.y = -_direction.y;
-        }
-    }*/
     public void Reset()
     {
         gameObject.transform.position = new Vector2(0, 0);
