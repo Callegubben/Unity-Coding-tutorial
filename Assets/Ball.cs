@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Ball : MonoBehaviour
 {
     public float speed = 550f;
+
+    [SerializeField]
+    private Text _countdownText;
 
     [SerializeField]
     private Vector2 _direction;
@@ -35,10 +40,8 @@ public class Ball : MonoBehaviour
         {
             y = Random.Range(-0.5f, 0.5f);
         }
-
         _direction = new Vector2(x, y);
-
-        _rigidbody.AddForce(_direction * speed);
+        StartCoroutine(waiter());
     }
 
     public void Reset()
@@ -46,5 +49,18 @@ public class Ball : MonoBehaviour
         gameObject.transform.position = new Vector2(0, 0);
         _rigidbody.velocity = new Vector2(0, 0);
         OnEnable();
+    }
+
+    IEnumerator waiter()
+    {
+        _countdownText.gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(1);
+        _countdownText.text = "2";
+        yield return new WaitForSecondsRealtime(1);
+        _countdownText.text = "1";
+        yield return new WaitForSecondsRealtime(1);
+        _countdownText.gameObject.SetActive(false);
+        _countdownText.text = "3";
+        _rigidbody.AddForce(_direction * speed);
     }
 }
