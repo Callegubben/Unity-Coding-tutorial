@@ -34,5 +34,6 @@ public class TextHandler : MonoBehaviour
         _goaltext.text = playerName;
         playerReady = !playerReady;
         _gameManager.StartPlay();
+        //I see you <3
     }
 }
