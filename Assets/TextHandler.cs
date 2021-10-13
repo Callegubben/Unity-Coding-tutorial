@@ -7,18 +7,16 @@ public class TextHandler : MonoBehaviour
 {
     [SerializeField]
     private Text _goaltext;
+
+    [SerializeField]
+    private Text _nameInput;
+
     public bool playerReady = false;
     private string playerName;
     private int goalcounter;
     [SerializeField]
     private GameManager _gameManager;
-    private void Start()
-    {
-        if (_goaltext == false)
-        {
-            _goaltext = GetComponent<Text>();
-        }
-    }
+
     public void Goal()
     {
         goalcounter++;
@@ -32,7 +30,8 @@ public class TextHandler : MonoBehaviour
     }
     public void SetReady()
     {
-        playerName = _goaltext.text;
+        playerName = _nameInput.text;
+        _goaltext.text = playerName;
         playerReady = !playerReady;
         _gameManager.StartPlay();
     }
