@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 7385838309027659197, guid: d839b65838f400c4da788aff58e3c43b, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 07129e163b8b3994aaf2df5029b5936f, type: 2}
     - target: {fileID: 7385838309027659199, guid: d839b65838f400c4da788aff58e3c43b, type: 3}
       propertyPath: gamemode
       value: BlockBreaker
@@ -298,7 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579713073e35b194ab467d6f1f83c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 0
+  hitPoints: 2
+  gameManager: {fileID: 426963407}
 --- !u!50 &139933200
 Rigidbody2D:
   serializedVersion: 4
@@ -604,7 +609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p1Text: {fileID: 0}
-  ball: {fileID: 0}
+  ball: {fileID: 1323305406}
 --- !u!4 &426963408
 Transform:
   m_ObjectHideFlags: 0
@@ -939,6 +944,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1323305406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7385838309027659196, guid: d839b65838f400c4da788aff58e3c43b, type: 3}
+  m_PrefabInstance: {fileID: 46264704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1457498292
 GameObject:
   m_ObjectHideFlags: 0
