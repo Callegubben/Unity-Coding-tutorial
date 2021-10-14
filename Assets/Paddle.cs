@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
+    public bool allowVerticaleMove;
+    public bool allowHorizontalMove;
+
     public string player;
     public float speed = 13f;
     private float _verticalDirection;
+    private float _horizontalDirection;
 
     [SerializeField]
     private Rigidbody2D _rigidbody;
@@ -29,12 +33,19 @@ public class Paddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _verticalDirection = Input.GetAxis($"{player}Vertical");
+        if (allowVerticaleMove)
+        {
+            _verticalDirection = Input.GetAxis($"{player}Vertical");
+        }
+        if (allowHorizontalMove)
+        {
+            _horizontalDirection = Input.GetAxis($"{player}Horizontal");
+        }
     }
 
     private void FixedUpdate()
     {
-        _rigidbody.position += new Vector2(0, _verticalDirection) * (speed * Time.deltaTime);
+        _rigidbody.position += new Vector2(_horizontalDirection, _verticalDirection) * (speed * Time.deltaTime);
     }
 
 }

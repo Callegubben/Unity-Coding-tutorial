@@ -8,6 +8,8 @@ public class Ball : MonoBehaviour
 {
     public float speed = 550f;
 
+    public string gamemode;
+
     [SerializeField]
     private Text _countdownText;
 
@@ -30,18 +32,36 @@ public class Ball : MonoBehaviour
         {
             _collider = GetComponent<CircleCollider2D>();
         }
-        float x = Random.Range(-1, 1);
-        while (x == 0)
+        if (gamemode == "Pong")
         {
-            x = Random.Range(-1, 1);
+            float x = Random.Range(-1, 1);
+            while (x == 0)
+            {
+                x = Random.Range(-1, 1);
+            }
+            float y = Random.Range(-0.5f, 0.5f);
+            while (y == 0)
+            {
+                y = Random.Range(-0.5f, 0.5f);
+            }
+            _direction = new Vector2(x, y);
+            StartCoroutine(waiter());
         }
-        float y = Random.Range(-0.5f, 0.5f);
-        while (y == 0)
+        else if (gamemode == "BlockBreaker")
         {
-            y = Random.Range(-0.5f, 0.5f);
+            float x = Random.Range(-1f, 1f);
+            while (x == 0)
+            {
+                x = Random.Range(-1f, 1f);
+            }
+            float y = Random.Range(0, 1f);
+            while (y == 0)
+            {
+                y = Random.Range(0, 1f);
+            }
+            _direction = new Vector2(x, y);
+            StartCoroutine(waiter());
         }
-        _direction = new Vector2(x, y);
-        StartCoroutine(waiter());
     }
 
     public void Reset()

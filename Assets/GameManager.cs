@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     }
     public void Win(string name)
     {
-        print($"{name} is the winner!");
+       // print($"{name} is the winner!");
         SceneManager.LoadScene("MainMenu");
     }
 
