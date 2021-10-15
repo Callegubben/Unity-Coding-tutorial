@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class TextHandler : MonoBehaviour
 {
+    public bool countdown;
+
     [SerializeField]
     private Text _goaltext;
 
@@ -25,6 +27,17 @@ public class TextHandler : MonoBehaviour
         if (goalcounter >= 3)
         {
             _gameManager.Win(playerName);
+        }
+
+    }
+    public void LoseLife()
+    {
+        goalcounter++;
+        _goaltext.text = $"Lives: " + (3-goalcounter);
+
+        if (goalcounter >= 3)
+        {
+            _gameManager.Lose();
         }
 
     }

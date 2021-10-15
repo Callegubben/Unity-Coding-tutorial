@@ -8,7 +8,13 @@ public class GameManager : MonoBehaviour
 {
     public Text p1Text;
     public Text p2Text;
+    public float blocksLeft = 1;
     public GameObject ball;
+
+    [SerializeField]
+    private bool pvp;
+    [SerializeField]
+    private Text _endOfGameText;
 
     public void StartPlay()
     {
@@ -25,7 +31,31 @@ public class GameManager : MonoBehaviour
     }
     public void Win(string name)
     {
-       // print($"{name} is the winner!");
+        ball.gameObject.GetComponent<Ball>().reset = false;
+        _endOfGameText.gameObject.SetActive(true);
+        if (pvp)
+        {
+            _endOfGameText.text = $"{name} is the winner!";
+        }
+        else
+        {
+            _endOfGameText.text = $"You win!";
+        }
+        StartCoroutine(GameOver());
+    }
+    public void Lose()
+    {
+        ball.gameObject.GetComponent<Ball>().reset = false;
+        _endOfGameText.gameObject.SetActive(true);
+        _endOfGameText.text = "Game Over";
+        StartCoroutine(GameOver());
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSecondsRealtime(3);
+        _endOfGameText.text = "3";
+        _endOfGameText.gameObject.SetActive(false);
         SceneManager.LoadScene("MainMenu");
     }
 

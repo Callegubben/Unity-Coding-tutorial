@@ -9,7 +9,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Pong");
     }
-
+    public void StartGameBreak()
+    {
+        SceneManager.LoadScene("BlockBreaker");
+    }
     public void QuitGame()
     {
         Application.Quit();

@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    public TextHandler goal;
+    public TextHandler target;
+    public bool lives;
 
     public int goalCount = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-            goal.Goal();
+            if (!lives)
+            {
+                target.Goal();
+            }
+            else
+            {
+                target.LoseLife();
+            }
             collision.gameObject.GetComponent<Ball>().Reset();
-            
         }
     }
 }

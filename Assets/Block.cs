@@ -6,7 +6,7 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     public float hitPoints;
-    public GameManagerBlockBreaker gameManager;
+    public GameManager gameManager;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -28,5 +28,10 @@ public class Block : MonoBehaviour
     private void Die()
     {
         gameObject.SetActive(false);
+        gameManager.blocksLeft--;
+        if (gameManager.blocksLeft == 0)
+        {
+            gameManager.Win("yeet");
+        }
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Ball : MonoBehaviour
 {
     public float speed = 550f;
-
+    public bool reset = true;
     public string gamemode;
 
     [SerializeField]
@@ -45,14 +45,17 @@ public class Ball : MonoBehaviour
                 y = Random.Range(-0.5f, 0.5f);
             }
             _direction = new Vector2(x, y);
-            StartCoroutine(waiter());
+            if (reset)
+            {
+                StartCoroutine(waiter());
+            }
         }
         else if (gamemode == "BlockBreaker")
         {
-            float x = Random.Range(-1f, 1f);
+            float x = Random.Range(-1, 1);
             while (x == 0)
             {
-                x = Random.Range(-1f, 1f);
+                x = Random.Range(-1, 1);
             }
             float y = Random.Range(0, 1f);
             while (y == 0)
@@ -60,7 +63,10 @@ public class Ball : MonoBehaviour
                 y = Random.Range(0, 1f);
             }
             _direction = new Vector2(x, y);
-            StartCoroutine(waiter());
+            if (reset)
+            {
+                StartCoroutine(waiter());
+            }
         }
     }
 
